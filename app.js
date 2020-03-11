@@ -25,7 +25,7 @@ var budgetController = (function(){
 
     return {
         addItem: function(type,des,val){
-            var newItem;
+            var newItem,ID;
             //create new ID
             if(data.allItems[type].length > 0){
             ID = data.allItems[type][data.allItems[type].length -1].id +1;
@@ -66,7 +66,18 @@ var UIController =(function(){
             discription: document.querySelector(DOMStrings.inputDescription).value,
             value: document.querySelector(DOMStrings.inputValue).value
         };
-        },
+    },
+
+            addListITem: function(obj1, type){
+                    //carete HTML string with placeholder text
+                    if (type === 'inc'){
+                    html ='<div class="item clearfix" id="income-%id%"> <div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div> <div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div> </div>';
+                    }
+                    else if (type === 'exp')
+                    {
+                    html = '<div class="item clearfix" id="expense-%id%"><div class="item__description">%description%</div><div class="right clearfix"><div class="item__value">%value%</div><div class="item__percentage">21%</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+                    }
+                        },
         getDomString : function() {
             return DOMStrings;
         }
